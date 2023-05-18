@@ -1,7 +1,6 @@
 export const forbiddenPasswords = ["amG84h6yeQ", "mc9Q20pdjH", "jnT6Q2f8U5"];
 
 /**
- * 
  * @param {string} password
  * @returns {boolean}
  */
@@ -25,9 +24,8 @@ export default function isValidPassword(password = "") {
   let Numbered = password.match(regexNumbered).join("");
   let reversNumber = Numbered.split("").reverse().join("");
   const setOfPassword = new Set([...password]);
-
-  
   // If validity is checked it returns true, otherwise false
+
   if (
     !isNumerous.test(password) ||
     single.test(password) ||
@@ -38,7 +36,10 @@ export default function isValidPassword(password = "") {
   ) {
     return false;
   }
-  
+  let response = false;
+  let regexNumbered = /\d+/g;
+  let Numbered = password.match(regexNumbered).join("");
+  let reversNumber = Numbered.split("").reverse().join("");
   for (let i = 0; i <= Numbered.length - 1; i++) {
     if (
       parseInt(Numbered[i]) + 1 === parseInt(Numbered[i + 1]) ||
@@ -50,7 +51,7 @@ export default function isValidPassword(password = "") {
   if (response) {
     return false;
   }
-
+  const setOfPassword = new Set([...password]);
   if (setOfPassword.size < 4) {
     return false;
   }
