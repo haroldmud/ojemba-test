@@ -1,7 +1,7 @@
 export const forbiddenPasswords = ["amG84h6yeQ", "mc9Q20pdjH", "jnT6Q2f8U5"];
 
 /**
- * If valid it returns true, otherwise false
+ * 
  * @param {string} password
  * @returns {boolean}
  */
@@ -27,7 +27,7 @@ export default function isValidPassword(password = "") {
   const setOfPassword = new Set([...password]);
 
   
-
+  // If validity is checked it returns true, otherwise false
   if (
     !isNumerous.test(password) ||
     single.test(password) ||
