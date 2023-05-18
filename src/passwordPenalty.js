@@ -1,4 +1,7 @@
 /**
+ * Calculates the sum of penalty points for a given password.
+ * Double characters like `aa` count as 1 penalty point, triples and more are 2 points.
+ * It returns the sum of penalty points for a password or 0.
  * @param {string} password
  * @returns {number}
  */
@@ -13,15 +16,12 @@ export default function penaltyPoints(password = "") {
     let letter = /(\w)\1+/;
     let doubling = password.match(numerous);
     let seek = password.match(letter);
-    // * Calculates the sum of penalty points for a given password.
     if (doubling && seek) {
       item = item + doubling[0].length + seek[0].length;
     }
-    // Double characters like `aa` count as 1 penalty point, triples and more are 2 points.
     if (doubling) {
       item = item + doubling[0].length;
     }
-    // It returns the sum of penalty points for a password or 0.
     if (seek) {
       item = item + seek[0].length;
     }
