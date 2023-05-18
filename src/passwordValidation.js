@@ -8,7 +8,7 @@ export default function isValidPassword(password = "") {
   // The following line ensures, that password is always a string, like the number 128 -> string "128"
   if (typeof password !== "string") password = String(password);
 
-  // * * * YOUR CODE GOES IN HERE ... * * *
+  // * * * YOUR CODE GOES IN HERE . * * *
   if (password.length !== 10) {
     return false;
   }
