@@ -16,9 +16,9 @@ export default function isValidPassword(password = "") {
   const isNumberedCharacter = /\d/;
   const singleCharacter = /^\d+$/;
   const symbolCharacter = /^[a-zA-Z0-9]+$/;
-  const UppercaseCharacter = /^[A-Z0-9]+$/;
-  const LowercaseCharacter = /^[a-z0-9]+$/;
-  const forbPass = forbiddenPasswords.includes(password);
+  const uppercaseCharacter = /^[A-Z0-9]+$/;
+  const lowercaseCharacter = /^[a-z0-9]+$/;
+  const forbiddenPasswords = forbiddenPasswords.includes(password);
   const response = false;
   const regexNumbered = /\d+/g;
   const Numbered = password.match(regexNumbered).join("");
@@ -27,19 +27,37 @@ export default function isValidPassword(password = "") {
 
 
 
-  if (
-    !isNumberedCharacter.test(password) ||
-    singleCharacter.test(password) ||
-    !symbolCharacter.test(password) ||
-    UppercaseCharacter.test(password) ||
-    LowercaseCharacter.test(password) ||
-    forbPass
-  ) {
+  if (!isNumberedCharacter.test(password)) {
     return false;
   }
+
+  if(singleCharacter.test(password)){
+    return false;
+  }
+
+  if(!symbolCharacter.test(password)){
+    return false;
+  }
+
+  if(uppercaseCharacter.test(password)){
+    return false;
+  }
+
+  if(lowercaseCharacter.test(password)){
+    return false
+  }
+
+  if(forbiddenPasswords){
+    return false
+  }
+  
   for (let i = 0; i <= Numbered.length - 1; i++) {
     if (
-      parseInt(Numbered[i]) + 1 === parseInt(Numbered[i + 1]) ||
+      parseInt(Numbered[i]) + 1 === parseInt(Numbered[i + 1]) 
+    ) {
+      response = true;
+    }
+    if (
       parseInt(reversNumber[i]) + 1 === parseInt(reversNumber[i + 1])
     ) {
       response = true;
