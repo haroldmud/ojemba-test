@@ -13,26 +13,26 @@ export default function isValidPassword(password = "") {
     return false;
   }
 
-  let isNumerous = /\d/;
-  let single = /^\d+$/;
-  let symb = /^[a-zA-Z0-9]+$/;
-  let majiscule = /^[A-Z0-9]+$/;
-  let miniscule = /^[a-z0-9]+$/;
-  let forbPass = forbiddenPasswords.includes(password);
-  let response = false;
-  let regexNumbered = /\d+/g;
-  let Numbered = password.match(regexNumbered).join("");
-  let reversNumber = Numbered.split("").reverse().join("");
+  const isNumberedCharacter = /\d/;
+  const singleCharacter = /^\d+$/;
+  const symbolCharacter = /^[a-zA-Z0-9]+$/;
+  const UppercaseCharacter = /^[A-Z0-9]+$/;
+  const LowercaseCharacter = /^[a-z0-9]+$/;
+  const forbPass = forbiddenPasswords.includes(password);
+  const response = false;
+  const regexNumbered = /\d+/g;
+  const Numbered = password.match(regexNumbered).join("");
+  const reversNumber = Numbered.split("").reverse().join("");
   const setOfPassword = new Set([...password]);
 
 
 
   if (
-    !isNumerous.test(password) ||
-    single.test(password) ||
-    !symb.test(password) ||
-    majiscule.test(password) ||
-    miniscule.test(password) ||
+    !isNumberedCharacter.test(password) ||
+    singleCharacter.test(password) ||
+    !symbolCharacter.test(password) ||
+    UppercaseCharacter.test(password) ||
+    LowercaseCharacter.test(password) ||
     forbPass
   ) {
     return false;
